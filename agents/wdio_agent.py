@@ -2,9 +2,6 @@ from fast import fast
 import os
 from mcp_agent.core.request_params import RequestParams
 
-# from dotenv import load_dotenv
-
-# load_dotenv()
 manual_folder_path = os.getenv("MANUAL_TEST_CASE_FOLDER_PATH")
 wdio_folder_path = os.getenv("WDIO_FOLDER_PATH")
 
@@ -58,6 +55,7 @@ STEPS:
          – Use locator methods (e.g. page.getByRole, page.locator) to perform the action.
          – **Record** the exact selector string used, plus an auto‑generated friendly name 
            (e.g. “loginButton”, “usernameField”).
+         - If element is not in screen then scroll to it first. and record that scroll action in test as well.
 
    b) CLEAN UP
       • await context.close()
@@ -68,6 +66,8 @@ STEPS:
       • For each recorded selector, generate a friendly name (e.g. “loginButton”, “usernameField”).
       • Use proper HTML selectors, do not use ref or xpath, only pproper working CSS selectors.
       • Explore repo for existing page objects, classes, and helper functions. (no need to  check  node_modules)
+      • Use existing helper functions if available, or create new ones.
+      • always check base pageobjects and remember base URL for the project,  if defined in the project.
       1. **Page Object Class**  
          – File: `wdio/test/pageobjects/<PascalCaseStoryName>Page.ts`  
          – Class name: `<PascalCaseStoryName>Page`  

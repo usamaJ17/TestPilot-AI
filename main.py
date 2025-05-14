@@ -11,6 +11,7 @@ config_path = load_and_create_config()
 
 from fast import fast
 from agents import manual_agent, wdio_agent
+from agents import bulk_wdio_agent
 
 
 def cleanup():

@@ -11,7 +11,7 @@ TARGET_AUTOMATION_AGENT_NAME = "WDIOAutomationAgent"
 @fast.orchestrator(
     name="BulkWDIOAutomationAgent",
     request_params=RequestParams(maxTokens=65536),
-    agents=["WDIOAutomationAgent"],
+    agents=[TARGET_AUTOMATION_AGENT_NAME],
     instruction=f"""
 You are the 'BulkTestAutomatorOrchestrator'. Your critical mission is to meticulously manage the automated generation of multiple WebdriverIO (WDIO) test suites. You will do this by creating and executing a **strictly sequential plan**, invoking the '{TARGET_AUTOMATION_AGENT_NAME}' for one Test ID at a time, and ensuring each completes before starting the next.
 

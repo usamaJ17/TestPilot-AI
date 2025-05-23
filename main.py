@@ -10,7 +10,7 @@ ensure_logs_file()
 config_path = load_and_create_config()
 
 from fast import fast
-from agents import manual_agent, wdio_agent
+from agents import manual_agent, wdio_agent, test_agent , Planner, Analyzer
 from agents import bulk_wdio_agent
 
 

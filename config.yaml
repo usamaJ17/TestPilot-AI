@@ -10,8 +10,9 @@
 # If not specified, defaults to "haiku".
 # Can be overriden with a command line switch --model=<model>, or within the Agent constructor.
 generic:
-  base_url: "http://localhost:11434/v1"
-# default_model: "generic.qwen3:4b"
+  # base_url: "http://localhost:11434/v1"
+  base_url: "https://56f6-34-125-42-179.ngrok-free.app/v1"
+# default_model: "generic.llama3.1:8b"
 
 google:
   base_url: "https://generativelanguage.googleapis.com/v1beta/openai"
@@ -19,7 +20,10 @@ default_model: "google.gemini-2.5-flash-preview-04-17"
 
 anthropic:
   base_url: "https://api.anthropic.com/v1"
-# default_model: "anthropic.claude-3-5-haiku-20241022"
+  # default_model: "anthropic.claude-3-7-sonnet"
+openai:
+  base_url: "https://openrouter.ai/api/v1"
+# default_model: "openai.nvidia/llama-3.1-nemotron-ultra-253b-v1:free"
 
 # Logging and Console Configuration:
 logger:
@@ -42,7 +46,7 @@ mcp:
   servers:
     playwright:
       command: "npx"
-      args: ["@playwright/mcp"]
+      args: ["-y", "@executeautomation/playwright-mcp-server"]
     filesystem:
       command: "npx"
       args:
@@ -51,4 +55,5 @@ mcp:
           "@modelcontextprotocol/server-filesystem",
           "${MANUAL_TEST_CASE_FOLDER_PATH}",
           "${WDIO_FOLDER_PATH}",
+          "${TEMP_DATA_PATH}"
         ]

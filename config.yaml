@@ -16,20 +16,19 @@ generic:
 
 google:
   base_url: "https://generativelanguage.googleapis.com/v1beta/openai"
-default_model: "google.gemini-2.5-flash-preview-04-17"
+default_model: "google.gemini-2.0-flash"
 
 anthropic:
   base_url: "https://api.anthropic.com/v1"
-  # default_model: "anthropic.claude-3-7-sonnet"
+#default_model: "haiku"
 openai:
   base_url: "https://openrouter.ai/api/v1"
 # default_model: "openai.nvidia/llama-3.1-nemotron-ultra-253b-v1:free"
 
 # Logging and Console Configuration:
 logger:
-  # level: "debug" | "info" | "warning" | "error"
-  # type: "none" | "console" | "file" | "http"
-  # path: "/path/to/logfile.jsonl"
+#  level: "debug"
+#  type: "console"
 
   # Switch the progress display on or off
   progress_display: true
@@ -46,7 +45,14 @@ mcp:
   servers:
     playwright:
       command: "npx"
-      args: ["-y", "@executeautomation/playwright-mcp-server"]
+      args: [
+        "@playwright/mcp@latest",
+        "--isolated"
+      ]
+    playwright_e: {
+      command : "npx",
+      args: [ "-y", "/Users/usama.jalal/playwright_mcp/mcp-playwright/dist/index.js" ]
+    }
     filesystem:
       command: "npx"
       args:
@@ -54,6 +60,5 @@ mcp:
           "-y",
           "@modelcontextprotocol/server-filesystem",
           "${MANUAL_TEST_CASE_FOLDER_PATH}",
-          "${WDIO_FOLDER_PATH}",
-          "${TEMP_DATA_PATH}"
+          "${PLAYWRIGHT_PROJECT_PATH}",
         ]
